@@ -2,6 +2,7 @@
 import {FormEvent, useEffect, useRef, useState} from "react";
 import ReactMarkdown from "react-markdown";
 import Arrow from "./Arrow";
+import Refresh from "./Refresh";
 
 export default function MessageInput() {
   const [step, setStep] = useState(0);
@@ -12,8 +13,7 @@ export default function MessageInput() {
   const [error, setError] = useState("");
   const textAreaRef = useRef<any>(null);
 
-  const submit = async (e: FormEvent) => {
-    e.preventDefault();
+  const submit = async () => {
     setLoading(true);
     setError("");
     setResult("");
@@ -72,25 +72,35 @@ export default function MessageInput() {
           )}
         </form>
         {step > 0 && (
-          <form onSubmit={submit} className="">
-            <div className="">
-              <textarea
-                ref={textAreaRef}
-                autoFocus
-                className="w-full rounded-xl py-1 px-2 bg-slate-500 resize-none min-h-5 max-h-32"
-                placeholder="Do you have any extra information or details to add? if not just Leave it empty"
-                onChange={(e) => {
-                  setMessage(e.target.value);
+          <div className="">
+            <textarea
+              ref={textAreaRef}
+              autoFocus
+              className="w-full rounded-xl py-1 px-2 bg-slate-500 resize-none min-h-5 max-h-32"
+              placeholder="Do you have any extra information or details to add? if not just Leave it empty"
+              onChange={(e) => {
+                setMessage(e.target.value);
+              }}
+            />
+            <div className="flex items-center justify-center">
+              <button
+                className={`rounded-full p-2 bg-blue-400 ${loading && "loading"}`}
+                onClick={() => {
+                  result.length ? setResult("") : submit();
                 }}
-              />
-              <div className="flex items-center justify-center">
-                <button className={`rounded-full p-2 bg-blue-400 ${loading && "loading"}`}>
-                  <span></span>
-                  Generate
-                </button>
-              </div>
+              >
+                <span></span>
+                {result.length ? (
+                  <div className="flex items-center gap-2">
+                    <div>Reset</div>
+                    <Refresh width={24} height={24} />{" "}
+                  </div>
+                ) : (
+                  "Generate"
+                )}
+              </button>
             </div>
-          </form>
+          </div>
         )}
       </div>
       <div className="mt-10">
