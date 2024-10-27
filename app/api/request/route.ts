@@ -35,25 +35,22 @@ export async function POST(req: NextRequest) {
   try {
     const ip = await getClientIp();
     console.log(subject, message);
-    // const ratelimit = new Ratelimit({
-    //   redis: Redis.fromEnv(),
-    //   limiter: Ratelimit.slidingWindow(3, "86400s"),
-    //   analytics: true,
-    //   prefix: "@upstash/ratelimit",
-    // });
-    // const {success} = await ratelimit.limit(ip);
-    // if (!success) {
-    //   console.log("rate limit has been reached");
-    //   return Response.json(
-    //     {
-    //       response: `You have reached the maximum limit for today!`,
-    //     },
-    //     {status: 500}
-    //   );
-    // }
-
-    // continue
-    //
+    const ratelimit = new Ratelimit({
+      redis: Redis.fromEnv(),
+      limiter: Ratelimit.slidingWindow(3, "86400s"),
+      analytics: true,
+      prefix: "@upstash/ratelimit",
+    });
+    const {success} = await ratelimit.limit(ip);
+    if (!success) {
+      console.log("rate limit has been reached");
+      return Response.json(
+        {
+          response: `You have reached the maximum limit for today!`,
+        },
+        {status: 500}
+      );
+    }
 
     const openai = new OpenAI({
       apiKey: process.env.OPEN_AI_API!,
