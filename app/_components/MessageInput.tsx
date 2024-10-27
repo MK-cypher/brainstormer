@@ -73,6 +73,7 @@ export default function MessageInput() {
             <div className="flex items-center gap-2">
               <textarea
                 ref={textAreaRef}
+                autoFocus
                 className="w-full rounded-xl py-1 px-2 bg-slate-500 resize-none min-h-5 max-h-32"
                 placeholder="Do you have anything to add? if not just Leave it empty"
                 onChange={(e) => {
@@ -91,12 +92,10 @@ export default function MessageInput() {
         {error && <div className="text-red-500">{error}</div>}
         {result && (
           <div className="markdown-content">
-            {" "}
-            <ReactMarkdown>{result}</ReactMarkdown>{" "}
+            <ReactMarkdown>{result}</ReactMarkdown>
           </div>
         )}
       </div>
-      {/* <pre className="my-20 max-w-full text-wrap whitespace-pre">{result}</pre> */}
     </div>
   );
 }
