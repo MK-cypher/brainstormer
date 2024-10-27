@@ -9,7 +9,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #100d1c;
     --foreground: #ededed;
   }
 }
@@ -18,4 +18,108 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: rgb(195, 196, 196);
+  border-radius: 100vw;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgb(44, 45, 45);
+  border-radius: 100vw;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: blue;
+}
+
+.container {
+  margin-inline: auto;
+}
+@media (min-width: 790px) {
+  .container {
+    max-width: 768px;
+  }
+}
+
+@media (max-width: 790px) {
+  .container {
+    padding-inline: 1rem;
+    /* max-width: 90%; */
+  }
+}
+
+input:focus,
+textarea:focus {
+  outline: 1px solid rgb(170, 204, 233);
+}
+
+button.loading {
+  position: relative;
+  pointer-events: none;
+  color: transparent;
+}
+button.loading > *:not(span) {
+  opacity: 0;
+}
+button.loading span {
+  display: inline;
+  border-radius: 50%;
+  border: 5px solid;
+  border-color: transparent white white white;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+  animation: rotate 1s infinite linear;
+}
+
+@keyframes rotate {
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+.markdown-content h1 {
+  font-size: 1.7rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: rgb(0, 179, 255);
+}
+.markdown-content h2 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-top: 0.8rem;
+  color: rgb(225, 0, 255);
+}
+.markdown-content h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-top: 0.7rem;
+}
+.markdown-content ol {
+  margin-left: 1.5rem;
+  list-style: decimal;
+}
+.markdown-content ol li::marker {
+  color: rgb(255, 0, 153);
+}
+.markdown-content ul li::marker {
+  color: rgb(35, 208, 81);
+}
+
+.markdown-content ul {
+  margin-left: 1.5rem;
+  list-style: disc;
+}
+
+.markdown-content li {
+  padding-block: 0.2rem;
 }
