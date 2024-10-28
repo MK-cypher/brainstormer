@@ -9,7 +9,7 @@ export default function MessageInput() {
   const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
-  const [result, setResult] = useState("hello");
+  const [result, setResult] = useState("");
   const [error, setError] = useState("");
   const textAreaRef = useRef<any>(null);
 
