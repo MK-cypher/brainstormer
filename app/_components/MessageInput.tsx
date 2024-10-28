@@ -9,7 +9,7 @@ export default function MessageInput() {
   const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
-  const [result, setResult] = useState("");
+  const [result, setResult] = useState("hello");
   const [error, setError] = useState("");
   const textAreaRef = useRef<any>(null);
 
@@ -55,6 +55,8 @@ export default function MessageInput() {
           <input
             className="w-full rounded-xl py-2 px-2 bg-slate-500 resize-none min-h-5 max-h-32"
             placeholder="What would you like the Ideas to be about? (Eg.: Software Project with AI features)"
+            value={subject}
+            readOnly={false}
             onChange={(e) => {
               e.target.value.length == 0 && setStep(0);
               setSubject(e.target.value);
@@ -76,6 +78,8 @@ export default function MessageInput() {
             <textarea
               ref={textAreaRef}
               autoFocus
+              value={message}
+              readOnly={false}
               className="w-full rounded-xl py-1 px-2 bg-slate-500 resize-none min-h-5 max-h-32"
               placeholder="Do you have any extra information or details to add? if not just Leave it empty"
               onChange={(e) => {
@@ -86,7 +90,14 @@ export default function MessageInput() {
               <button
                 className={`rounded-full p-2 bg-blue-400 ${loading && "loading"}`}
                 onClick={() => {
-                  result.length ? setResult("") : submit();
+                  if (result.length) {
+                    setStep(0);
+                    setResult("");
+                    setMessage("");
+                    setSubject("");
+                  } else {
+                    submit();
+                  }
                 }}
               >
                 <span></span>

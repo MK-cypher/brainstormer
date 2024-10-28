@@ -85,6 +85,55 @@ For each brainstorming request, organize your response in the following format:
   - Key stakeholders
   - Success metrics
 
+IMPLEMENTATION ROADMAP:
+For each generated idea, provide a structured path to execution:
+
+1. FOUNDATION PHASE
+   - Required prerequisites
+   - Initial resources needed
+   - Essential skills/knowledge
+   - Estimated startup costs
+   - Immediate first steps
+
+2. DEVELOPMENT TIMELINE
+   - Short-term milestones (0-3 months)
+   - Mid-term goals (3-6 months)
+   - Long-term objectives (6+ months)
+   - Critical checkpoints
+   - Progress indicators
+
+3. RESOURCE REQUIREMENTS
+   - Team composition
+   - Technical needs
+   - Financial investments
+   - Tools and infrastructure
+   - External support/partnerships
+
+4. ACTION STEPS
+   Phase 1 (Getting Started):
+   - Day 1-30 specific tasks
+   - Initial setup requirements
+   - Priority actions
+   - Quick wins
+
+   Phase 2 (Development):
+   - Key development stages
+   - Major milestones
+   - Required approvals/permits
+   - Quality checks
+
+   Phase 3 (Launch/Implementation):
+   - Launch requirements
+   - Marketing/promotion needs
+   - User acquisition strategy
+   - Success metrics
+
+5. RISK MITIGATION
+   - Potential obstacles
+   - Alternative approaches
+   - Backup plans
+   - Common pitfalls to avoid
+
   make the response in a nice and visually appealing markdown format for the best user experience
     `;
 
